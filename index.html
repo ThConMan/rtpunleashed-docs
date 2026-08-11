@@ -9,6 +9,9 @@
 <meta property="og:description" content="Random teleports for Paper. Async safe-spot search, live in-game configuration, playtime-earned perks.">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,216 +20,334 @@
 <nav class="nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <a class="nav-logo" href="#top">
-      <span class="logo-mark" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ddc6ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="3.2"/><path d="M12 2.6v3.1M12 18.3v3.1M2.6 12h3.1M18.3 12h3.1"/>
-          <path d="M5.4 5.4l2.2 2.2M16.4 16.4l2.2 2.2M18.6 5.4l-2.2 2.2M7.6 16.4l-2.2 2.2" opacity=".6"/>
-        </svg>
-      </span>
-      RTP Unleashed
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="11" fill="none" stroke="#ddc6ff" stroke-width="5"/>
+        <g stroke="#b98bff" stroke-width="5" stroke-linecap="round">
+          <path d="M32 6v8M32 50v8M6 32h8M50 32h8"/>
+        </g>
+      </svg>
+      <span>RTP</span><span>Unleashed</span>
     </a>
     <div class="nav-links">
-      <a href="#features">Features</a>
       <a href="#how">How it works</a>
+      <a href="#menu">The menu</a>
+      <a href="#features">Features</a>
+      <a href="#playtime">Playtime</a>
       <a href="#commands">Commands</a>
-      <a href="#config">Configuration</a>
+      <a class="nav-download" href="#get">Get it</a>
     </div>
-    <a class="btn btn-ghost" href="#get" style="padding:9px 18px;font-size:14px">Get it</a>
   </div>
 </nav>
 
 <main id="top">
 
-<section class="hero">
-  <div class="shell hero-grid">
-    <div>
-      <span class="eyebrow">Paper 1.21+ &middot; Java &amp; Bedrock</span>
-      <h1>Random teleports that feel<br><span class="portal-text">worth the wait</span>.</h1>
-      <p class="lede">
-        Most wilderness plugins make you click, freeze, and hope. RTP Unleashed hunts for
-        your landing spot <em>while</em> the charge-up plays, so the countdown ends and you
-        are already there. No hitch, no rubber-band, no server lag spike.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#get">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
-          Get RTP Unleashed
-        </a>
-        <a class="btn btn-ghost" href="#how">See how it works</a>
-      </div>
-      <p class="hero-note">Worlds are opt-in. Nothing routes players anywhere until you say so.</p>
+  <header class="plugin-hero">
+    <div class="runefield" aria-hidden="true">
+      <svg style="left:8%;top:62%;--s:22px;--dur:19s;--delay:0s;--peak:.45;--spin:30deg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg>
+      <svg style="left:19%;top:38%;--s:15px;--dur:23s;--delay:3s;--peak:.35;--spin:-24deg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2 2 22h20z"/></svg>
+      <svg style="left:31%;top:74%;--s:18px;--dur:17s;--delay:6s;--peak:.4;--spin:40deg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <svg style="left:68%;top:30%;--s:20px;--dur:21s;--delay:2s;--peak:.42;--spin:-32deg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg>
+      <svg style="left:81%;top:66%;--s:16px;--dur:25s;--delay:8s;--peak:.32;--spin:26deg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h16M12 4v16"/></svg>
+      <svg style="left:90%;top:44%;--s:24px;--dur:18s;--delay:11s;--peak:.38;--spin:-18deg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 22h20z"/></svg>
+      <svg style="left:47%;top:80%;--s:14px;--dur:27s;--delay:5s;--peak:.3;--spin:44deg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="12" cy="12" r="8"/></svg>
     </div>
 
-    <div class="mock" role="img" aria-label="The in-game world picker: two world icons spaced symmetrically on the middle row of a chest menu.">
-      <div class="mock-bar"><span class="mock-dot"></span> Wilderness Teleport</div>
-      <div class="grid9">
-        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div><div class="cell world" style="--ic:#6fe39a"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell world" style="--ic:#c4553f"></div><div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-      </div>
-      <p class="mock-caption">
-        Icons space themselves out automatically &mdash; or pin any world to any slot
-        by clicking. Menu height, filler blocks and every label are yours.
-      </p>
+    <div class="rune" aria-hidden="true">
+      <svg viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="12" stroke="#ddc6ff" stroke-width="3.4"/>
+        <circle cx="32" cy="32" r="21" stroke="#b98bff" stroke-width="2" stroke-dasharray="5 7" opacity=".85"/>
+        <g stroke="#b98bff" stroke-width="3.4" stroke-linecap="round">
+          <path d="M32 4v9M32 51v9M4 32h9M51 32h9"/>
+        </g>
+        <g stroke="#5f89f2" stroke-width="2.6" stroke-linecap="round" opacity=".8">
+          <path d="M13 13l6 6M45 45l6 6M51 13l-6 6M19 45l-6 6"/>
+        </g>
+      </svg>
     </div>
+
+    <p class="eyebrow">Paper 1.21+ &middot; Java and Bedrock</p>
+    <h1>RTP <span class="glint-text">Unleashed</span></h1>
+    <p class="hero-copy">
+      Most wilderness plugins make you click, freeze, and hope. RTP Unleashed hunts for your
+      landing spot <em>while</em> the charge-up plays, so the countdown ends and you are
+      already there. No hitch, no rubber-band, no lag spike for everyone else on the server.
+    </p>
+    <div class="plugin-hero-meta">
+      <span class="hero-badge">Async safe-spot search</span>
+      <span class="hero-badge">Configured in game</span>
+      <span class="hero-badge">Dupe-proof menus</span>
+      <span class="hero-badge">Bedrock safe</span>
+    </div>
+    <div class="hero-actions">
+      <a class="button primary" href="#get">Get RTP Unleashed</a>
+      <a class="button secondary" href="#how">See how it works</a>
+    </div>
+  </header>
+
+  <div class="statband reveal">
+    <div><b>0</b><span>RESTARTS TO RECONFIGURE</span></div>
+    <div><b>29</b><span>AUTOMATED TESTS</span></div>
+    <div><b>1.21+</b><span>PAPER, JAVA 21+</span></div>
   </div>
-</section>
 
-<section id="features">
-  <div class="shell">
-    <div class="section-head reveal">
+  <section class="section" id="how">
+    <div class="section-heading reveal">
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h2>The waiting is the search</h2>
+      <p>The ordering is the whole trick. The expensive part finishes while the player is still
+        watching the animation, so the teleport itself costs nothing at the moment it happens.</p>
+    </div>
+
+    <div class="loop">
+      <div class="loop-step reveal" data-d="1">
+        <span class="step">01</span>
+        <h3>The charge-up begins</h3>
+        <p>A helix, vortex or ring animation winds up with pitch-ramped sounds and a countdown
+          title. Move or take a hit and it cancels cleanly, costing nothing.</p>
+      </div>
+      <div class="loop-step reveal" data-d="2">
+        <span class="step">02</span>
+        <h3>Chunks load in the background</h3>
+        <p>Candidate points are sampled from the ring and rejected against the world border
+          before a single chunk is touched. Each chunk that does load is checked in several
+          places before another is paid for.</p>
+      </div>
+      <div class="loop-step reveal" data-d="3">
+        <span class="step">03</span>
+        <h3>Zero, and you are there</h3>
+        <p>Departure burst, arrival chime, and a few seconds of protection so nobody shoots you
+          on landing &mdash; dropped early if you swing first. Only now do the cooldown and the
+          fee apply.</p>
+      </div>
+    </div>
+
+    <div class="command-card reveal">
+      <code>/rtp</code>
+      <span>A blocked teleport <b>refunds the fee and clears the cooldown</b>. Players are never
+        charged for a landing that did not happen.</span>
+    </div>
+  </section>
+
+  <section class="section" id="menu">
+    <div class="split">
+      <div class="reveal">
+        <p class="eyebrow">THE PICKER</p>
+        <h2>A menu you arrange by clicking</h2>
+        <p style="color:var(--text-dim)">
+          World icons space themselves out symmetrically instead of packing shoulder to
+          shoulder. Prefer your own arrangement? Pick a world up in the layout editor and click
+          the slot it should live in &mdash; that pins it, and everything unpinned keeps flowing
+          around your pins.
+        </p>
+        <p style="color:var(--text-dim)">
+          Menu height, the filler blocks in the empty slots, every label and every lore line are
+          yours to set, in game, without touching a file.
+        </p>
+        <p class="fine-print">Every window is decoration only. Clicks, shift-clicks, drags,
+          hotbar and offhand swaps and hopper pulls are all refused, and menus force-close on
+          reload so no window outlives its listener.</p>
+      </div>
+
+      <div class="menu-mock card-surface reveal" data-d="1" role="img"
+           aria-label="The in-game world picker: two world icons spaced symmetrically on the middle row of a chest menu.">
+        <p class="menu-title">Wilderness Teleport</p>
+        <div class="menu-grid">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span class="world" style="--ic:#7cbd4b"></span><span></span><span></span><span></span><span class="world" style="--ic:#c4553f"></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="menu-caption">Two worlds land at columns three and seven, mirrored around the
+          centre. One sits dead centre; five per row still keep a gap between neighbours.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="section-heading reveal">
+      <p class="eyebrow">FEATURES</p>
       <h2>Built for servers that actually have players on</h2>
       <p>Every decision here started as a complaint about some other RTP plugin.</p>
     </div>
 
     <div class="bento">
-      <article class="card reveal">
-        <div class="card-kicker" aria-hidden="true">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ddc6ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg>
-        </div>
-        <h3>The search runs during the charge-up</h3>
-        <p>Chunks load asynchronously, chained one at a time, while the countdown plays. By the time it hits zero the destination is usually already found, so the jump is instant.</p>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-kicker" aria-hidden="true">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ddc6ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></svg>
-        </div>
+      <div class="bento-md card-surface reveal">
+        <p class="card-kicker">NO RESTARTS</p>
         <h3>Configured entirely in game</h3>
-        <p>Radii, shapes, cooldowns, warmups, costs, Y ranges, scan modes, world add and remove. Every change applies instantly and writes itself back to disk. No restarts, no file editing.</p>
-      </article>
+        <p>Radii, shapes, cooldowns, warmups, costs, Y ranges, scan modes, and adding or removing
+          worlds. Every change applies instantly and writes itself back to disk. Worlds are
+          opt-in, so nothing routes players anywhere until you say so.</p>
+      </div>
 
-      <article class="card reveal">
-        <div class="card-kicker" aria-hidden="true">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ddc6ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Menus that cannot dupe</h3>
-        <p>Every window is decoration only, behind a guard that refuses clicks, shift-clicks, drags, hotbar and offhand swaps and hopper pulls &mdash; and force-closes on reload so no window outlives its listener.</p>
-      </article>
+      <div class="bento-md card-surface reveal" data-d="1">
+        <p class="card-kicker">LANDINGS</p>
+        <h3>Somewhere sensible, every time</h3>
+        <p>Lava, cactus, fire, powder snow, berry bushes and cobwebs are refused. Oceans and
+          rivers are skipped. Water and leaf landings are opt-in, and roofed worlds get a volume
+          scan instead of a heightmap guess that would drop players on the nether roof.</p>
+      </div>
 
-      <article class="card reveal">
-        <div class="card-kicker" aria-hidden="true">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ddc6ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
-        </div>
-        <h3>Perks earned by playtime</h3>
-        <p>Set thresholds like <code>10h</code> or <code>7d</code> and regulars get shorter cooldowns, faster warmups and cheaper teleports. Read from the vanilla statistic, so there is nothing to grant and nothing to sync.</p>
-      </article>
+      <div class="bento-lg card-surface reveal">
+        <span class="bento-num">0</span>
+        <h3>Dupe vectors</h3>
+        <p>Menus hold rendered decoration, never real items, behind a guard that refuses every
+          inventory mutation at lowest priority.</p>
+      </div>
 
-      <article class="card reveal">
-        <div class="card-kicker" aria-hidden="true">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ddc6ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V6a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 12h8M8 16h5"/></svg>
-        </div>
-        <h3>Land somewhere sensible</h3>
-        <p>Lava, cactus, fire, powder snow, berry bushes and cobwebs are refused. Oceans and rivers are skipped. Water and leaf landings are opt-in, and roofed worlds get a volume scan instead of a heightmap guess.</p>
-      </article>
+      <div class="bento-lg card-surface reveal" data-d="1">
+        <span class="bento-num">8</span>
+        <h3>Columns per chunk</h3>
+        <p>Chunk loads are the real cost, so each one is searched in several places before
+          another is paid for. Generation can be switched off per world.</p>
+      </div>
 
-      <article class="card reveal">
-        <div class="card-kicker" aria-hidden="true">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ddc6ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
-        </div>
-        <h3>MiniMessage everywhere</h3>
-        <p>Gradients, hex, rainbow, fonts, hover and click across every message, world name, menu title and lore line. Player-supplied text is never parsed, so nobody can inject formatting through a name.</p>
-      </article>
+      <div class="bento-lg card-surface reveal" data-d="2">
+        <span class="bento-num">3</span>
+        <h3>Charge animations</h3>
+        <p>Helix, vortex and rings, each with configurable particles, density and pitch-ramped
+          sounds. Or none, if your server prefers quiet.</p>
+      </div>
 
-      <article class="card reveal wide">
-        <div class="card-kicker" aria-hidden="true">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ddc6ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/><circle cx="12" cy="12" r="3"/></svg>
-        </div>
-        <h3>Bedrock players get the same thing</h3>
-        <p>Chest menus, chat prompts for typed values, plain sounds and particles &mdash; no anvil renames or sign editors that Geyser mistranslates. What a Java player sees, a Bedrock player sees.</p>
-      </article>
+      <div class="bento-md card-surface reveal">
+        <p class="card-kicker">BEDROCK</p>
+        <h3>The same plugin on both clients</h3>
+        <p>Chest menus, chat prompts for typed values, plain sounds and particles. No anvil
+          renames or sign editors for Geyser to mistranslate, so what a Java player sees, a
+          Bedrock player sees.</p>
+      </div>
+
+      <div class="bento-md card-surface reveal" data-d="1">
+        <p class="card-kicker">OPTIONAL HOOKS</p>
+        <h3>Vault and PlaceholderAPI</h3>
+        <p>Per-world costs charged on arrival when Vault is installed, and placeholders for
+          cooldowns, playtime and world counts when PlaceholderAPI is. The plugin loads and runs
+          without either.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="how">
-  <div class="shell">
-    <div class="section-head reveal">
-      <h2>What happens when a player types the command</h2>
-      <p>The ordering is the whole trick: the expensive part finishes while the player is still watching the animation.</p>
+  <section class="section" id="playtime">
+    <div class="section-heading reveal">
+      <p class="eyebrow">PLAYTIME PERKS</p>
+      <h2>Regulars wait less</h2>
+      <p>Set thresholds and the cooldown shortens as people play. Read straight from the vanilla
+        play-time statistic, so there is nothing to grant, nothing to sync, and no rank ladder to
+        keep in step with your permissions plugin.</p>
     </div>
 
-    <div class="flow">
-      <div class="step reveal"><div class="step-num">1</div><div><h3>Eligibility, once</h3><p>Permission, world enabled, cooldown, balance. A refusal happens immediately and costs nothing.</p></div></div>
-      <div class="step reveal"><div class="step-num">2</div><div><h3>The charge-up starts and the hunt begins</h3><p>A helix, vortex or ring animation winds up with pitch-ramped sounds while the async search samples the ring, rejects anything outside the world border, and loads candidate chunks one at a time.</p></div></div>
-      <div class="step reveal"><div class="step-num">3</div><div><h3>Several columns per loaded chunk</h3><p>Chunk loads are the real cost, so each one is checked in several places before another is paid for. Chunk generation can be switched off per world for pregenerated maps.</p></div></div>
-      <div class="step reveal"><div class="step-num">4</div><div><h3>The countdown ends and you are there</h3><p>Departure burst, arrival chime, and a few seconds of protection so you are not shot on landing &mdash; dropped early if you swing first.</p></div></div>
-      <div class="step reveal"><div class="step-num">5</div><div><h3>Only now does it cost anything</h3><p>The cooldown starts and the fee is taken on a successful landing. A blocked teleport refunds and clears the cooldown.</p></div></div>
+    <div class="rates reveal">
+      <div class="rate-row">
+        <strong>Newcomer<small>the world's own setting</small></strong>
+        <div class="rate-track"><div class="rate-fill" style="--w:100%"></div></div>
+        <span class="rate-val">300s</span>
+      </div>
+      <div class="rate-row">
+        <strong>After 10 hours<small>10h</small></strong>
+        <div class="rate-track"><div class="rate-fill" style="--w:80%"></div></div>
+        <span class="rate-val">240s</span>
+      </div>
+      <div class="rate-row">
+        <strong>After 2 days<small>2d, warmup 2s</small></strong>
+        <div class="rate-track"><div class="rate-fill" style="--w:60%"></div></div>
+        <span class="rate-val">180s</span>
+      </div>
+      <div class="rate-row">
+        <strong>After 7 days<small>7d, warmup 1s</small></strong>
+        <div class="rate-track"><div class="rate-fill" style="--w:40%"></div></div>
+        <span class="rate-val">120s</span>
+      </div>
+      <div class="rate-row">
+        <strong>After 30 days<small>30d, instant, half price</small></strong>
+        <div class="rate-track"><div class="rate-fill" style="--w:20%"></div></div>
+        <span class="rate-val">60s</span>
+      </div>
     </div>
-  </div>
-</section>
+    <p class="fine-print reveal">Shipped defaults, all editable in game. Someone past several
+      thresholds gets the best value of each field, so the ladder never needs ordering rules.</p>
+  </section>
 
-<section id="commands">
-  <div class="shell">
-    <div class="section-head reveal"><h2>Commands</h2><p>Aliases: <code>/wild</code>, <code>/randomtp</code>, <code>/rtpu</code>.</p></div>
-    <div class="cmd-grid">
-      <div class="cmd reveal"><code>/rtp</code><span>Teleport, or open the picker when several worlds are available</span></div>
-      <div class="cmd reveal"><code>/rtp &lt;world&gt;</code><span>Go to a specific world</span></div>
-      <div class="cmd reveal"><code>/rtp &lt;player&gt;</code><span>Send someone else. Console and command blocks welcome</span></div>
-      <div class="cmd reveal"><code>/rtp gui</code><span>The world picker</span></div>
-      <div class="cmd reveal"><code>/rtp cancel</code><span>Stop a charging teleport</span></div>
-      <div class="cmd reveal"><code>/rtp info</code><span>Effective settings, your playtime and your cooldown</span></div>
-      <div class="cmd reveal"><code>/rtp admin</code><span>The live configuration menu</span></div>
-      <div class="cmd reveal"><code>/rtp reload</code><span>Re-read the files after hand edits</span></div>
-    </div>
-  </div>
-</section>
+  <section class="section" id="text">
+    <div class="split">
+      <div class="reveal">
+        <p class="eyebrow">TEXT</p>
+        <h2>MiniMessage, everywhere</h2>
+        <p style="color:var(--text-dim)">
+          Every message, world name, menu title and lore line takes the full MiniMessage
+          surface: hex, gradients, rainbow, bold, fonts, hover and click. Blank a key and that
+          message goes silent or that lore line disappears.
+        </p>
+        <p style="color:var(--text-dim)">
+          A world's display name renders wherever it appears &mdash; chat, the action bar, the
+          picker, the arrival message &mdash; so one setting styles it everywhere.
+        </p>
+        <p class="fine-print">Text a player controls is deliberately never parsed, so nobody can
+          inject formatting or a fake click event through a name.</p>
+      </div>
 
-<section id="config">
-  <div class="shell">
-    <div class="section-head reveal">
-      <h2>Per world, and all of it live</h2>
-      <p>Each world inherits a defaults layer and overrides only what it needs. The admin menu shows which layer answered.</p>
+      <div class="code-card reveal" data-d="1">
+        <span>WORLD DISPLAY NAME</span>
+        <code>&lt;gradient:#55ddff:#a855f7&gt;The Wilds&lt;/gradient&gt;</code>
+        <p class="style-demo">The Wilds</p>
+      </div>
     </div>
-    <div class="table-wrap reveal">
-      <table>
-        <thead><tr><th>Setting</th><th>What it does</th></tr></thead>
-        <tbody>
-          <tr><td><code>shape</code></td><td>Circle or square search region</td></tr>
-          <tr><td><code>min-radius</code> / <code>max-radius</code></td><td>The ring players land inside</td></tr>
-          <tr><td><code>center-mode</code></td><td>World spawn, world border centre, or fixed coordinates</td></tr>
-          <tr><td><code>min-y</code> / <code>max-y</code></td><td>Height band the search will accept</td></tr>
-          <tr><td><code>scan-mode</code></td><td>Auto, surface heightmap, or a volume scan for roofed worlds</td></tr>
-          <tr><td><code>cooldown-seconds</code></td><td>Persists across relogs and restarts</td></tr>
-          <tr><td><code>warmup-seconds</code></td><td>How long the charge-up runs</td></tr>
-          <tr><td><code>cost</code></td><td>Charged through Vault on arrival, if installed</td></tr>
-          <tr><td><code>invulnerability-seconds</code></td><td>Grace window after landing</td></tr>
-          <tr><td><code>target-world</code></td><td>Send a nether or lobby <code>/rtp</code> into the overworld</td></tr>
-          <tr><td><code>allow-chunk-generation</code></td><td>Off restricts the search to already-generated chunks</td></tr>
-          <tr><td><code>unsafe-ground</code> / <code>blocked-biomes</code></td><td>Blacklists, with <code>*</code> wildcards</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="get">
-  <div class="shell">
-    <div class="section-head reveal">
+  <section class="section" id="commands">
+    <div class="section-heading reveal">
+      <p class="eyebrow">COMMANDS</p>
+      <h2>Short to type, hard to misuse</h2>
+      <p>Aliases: <code>/wild</code>, <code>/randomtp</code>, <code>/rtpu</code>.</p>
+    </div>
+
+    <div class="config-grid">
+      <div class="config-card card-surface reveal"><span class="config-icon">/rtp</span><p>Teleport, or open the picker when several worlds are available.</p></div>
+      <div class="config-card card-surface reveal" data-d="1"><span class="config-icon">/rtp &lt;world&gt;</span><p>Go straight to one world, skipping the menu.</p></div>
+      <div class="config-card card-surface reveal" data-d="2"><span class="config-icon">/rtp &lt;player&gt;</span><p>Send someone else. Console and command blocks welcome.</p></div>
+      <div class="config-card card-surface reveal"><span class="config-icon">/rtp cancel</span><p>Stop a charging teleport before it lands.</p></div>
+      <div class="config-card card-surface reveal" data-d="1"><span class="config-icon">/rtp info</span><p>Effective settings, your playtime and your cooldown.</p></div>
+      <div class="config-card card-surface reveal" data-d="2"><span class="config-icon">/rtp admin</span><p>The live configuration menu. Everything is in here.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="config">
+    <div class="section-heading reveal">
+      <p class="eyebrow">PER WORLD</p>
+      <h2>A defaults layer, and overrides only where you need them</h2>
+      <p>Each world inherits the defaults and changes just what it should. The admin menu tells
+        you which layer answered for every setting.</p>
+    </div>
+
+    <div class="limits-table card-surface reveal">
+      <div class="limits-row up"><h3>Shape</h3><p>A circle or a square ring, anchored on world spawn, the world border centre, or fixed coordinates.</p></div>
+      <div class="limits-row up"><h3>Radius</h3><p>Minimum and maximum distance from that anchor. The world border is respected with a margin so nobody lands inside the wall.</p></div>
+      <div class="limits-row mid"><h3>Height</h3><p>A Y band the search will accept, plus surface, volume, or automatic scanning per world.</p></div>
+      <div class="limits-row mid"><h3>Timing</h3><p>Warmup, cooldown and the arrival protection window, each per world and each shortened by playtime.</p></div>
+      <div class="limits-row mid"><h3>Cost</h3><p>Charged through Vault on arrival, if you use it. Multiplied down for long-serving players.</p></div>
+      <div class="limits-row off"><h3>Redirects</h3><p>Send a nether or lobby <code>/rtp</code> into the overworld instead, with <code>target-world</code>.</p></div>
+      <div class="limits-row off"><h3>Blacklists</h3><p>Unsafe ground, unsafe headroom and blocked biomes, all with <code>*</code> wildcards.</p></div>
+    </div>
+  </section>
+
+  <div class="install-panel" id="get">
+    <div>
       <h2>Get RTP Unleashed</h2>
-      <p>RTP Unleashed is proprietary software. Builds are distributed by the author; the source is not public and is not licensed for redistribution or derivative works.</p>
+      <ol>
+        <li>Drop the jar into <code>plugins/</code> and start the server.</li>
+        <li>Run <code>/rtp admin</code> and click a world to enable it. Worlds are opt-in.</li>
+        <li>Set the radius and cooldown to taste. There is no step four.</li>
+      </ol>
+      <p class="fine-print">RTP Unleashed is proprietary software. Builds are distributed by the
+        author; the source is not public and is not licensed for redistribution or derivative
+        works.</p>
     </div>
-    <div class="hero-actions reveal">
-      <a class="btn btn-primary" href="https://github.com/ThConMan">Contact the author</a>
-    </div>
-    <p class="hero-note reveal" style="margin-top:26px">
-      Requires Paper 1.21 or newer and Java 21+. PlaceholderAPI and Vault are optional &mdash;
-      the plugin loads and runs without either.
-    </p>
+    <a class="button primary" href="https://github.com/ThConMan">Contact the author</a>
   </div>
-</section>
 
 </main>
 
 <footer>
-  <div class="shell foot-inner">
-    <div>&copy; 2026 ThConMan. All rights reserved.</div>
-    <div class="foot-links">
-      <a href="#features">Features</a>
-      <a href="#commands">Commands</a>
-      <a href="#get">Get it</a>
-    </div>
-  </div>
+  <p class="footer-logo"><span>RTP Unleashed</span></p>
+  <p>&copy; 2026 ThConMan. All rights reserved.</p>
+  <p>Requires Paper 1.21 or newer and Java 21+. Vault and PlaceholderAPI optional.</p>
 </footer>
 
 <script>
@@ -244,13 +365,10 @@
 
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
-  document.querySelectorAll('.reveal').forEach(function (el, i) {
-    el.style.transitionDelay = (i % 6) * 45 + 'ms';
-    io.observe(el);
-  });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 })();
 </script>
 </body>
