@@ -7,9 +7,10 @@
    primary calls to action. The Unleashed plugins should read as one family,
    so the tokens below are the family's, not this plugin's own invention.
 
-   Only the components differ: the crafting recipe and item icons are gone,
-   and a chest-menu mock takes their place, reusing the same slot bevel the
-   recipe grid used so the two sites shade inventory slots identically.
+   Only the components differ: the crafting recipe is gone and chest-menu mocks
+   take its place, reusing the same slot bevel the recipe grid used so the two
+   sites shade inventory slots identically. The item art is built the same way
+   as the Enchants icons -- real vanilla textures, not redrawn approximations.
 
    Every colour is a token. Recolouring the whole site means editing :root.
    =========================================================================== */
@@ -868,3 +869,71 @@ footer p { margin: 5px 0; }
 /* --- side-by-side: copy next to a panel ----------------------------------- */
 .split { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 56px; }
 @media (max-width: 940px) { .split { grid-template-columns: 1fr; gap: 36px; } }
+
+/* --- real Minecraft item art ----------------------------------------------
+   Every icon below is the game's own texture, extracted from the client jar
+   and embedded in an SVG: flat items are the raw 16x16, blocks are those same
+   textures projected onto an isometric cube the way the inventory draws one
+   (rotate Y 225, X 30) with vanilla face shading baked into the pixels. They
+   are drawn pixelated on purpose -- smoothing a 16x16 texture is what makes a
+   Minecraft site look cheap. */
+.mc {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  image-rendering: pixelated;
+}
+.mc-grass_block { background-image: url("icons/grass_block.svg"); }
+.mc-netherrack  { background-image: url("icons/netherrack.svg"); }
+.mc-end_stone   { background-image: url("icons/end_stone.svg"); }
+.mc-lodestone   { background-image: url("icons/lodestone.svg"); }
+.mc-clock       { background-image: url("icons/clock.svg"); }
+.mc-compass     { background-image: url("icons/compass.svg"); }
+.mc-ender_pearl { background-image: url("icons/ender_pearl.svg"); }
+.mc-gold_ingot  { background-image: url("icons/gold_ingot.svg"); }
+.mc-name_tag    { background-image: url("icons/name_tag.svg"); }
+.mc-spyglass    { background-image: url("icons/spyglass.svg"); }
+.mc-map         { background-image: url("icons/map.svg"); }
+
+/* In a slot a flat item leaves a margin; a block fills more of the cell,
+   exactly as it does in a real inventory. */
+.menu-grid span .mc { width: 74%; height: 74%; }
+.menu-grid span .mc.block { width: 96%; height: 96%; }
+.menu-grid span.world::after { content: none; }
+
+/* Item art standing in for the abstract card glyphs. */
+.card-kicker-icon { display: block; width: 34px; height: 34px; margin-bottom: 14px; }
+.limits-row .mc { width: 26px; height: 26px; vertical-align: -6px; margin-right: 12px; }
+.limits-row h3 { display: flex; align-items: center; }
+
+/* The hero mark is an ender pearl -- the game's own teleport item, at a size
+   that carries the hero. It keeps the float and halo the Enchants logo has. */
+.rune .mc { width: 74%; height: 74%; filter: drop-shadow(0 8px 22px rgba(124, 78, 217, .85)); }
+.nav-logo .mc { width: 22px; height: 22px; }
+
+/* A second mock: the admin menu, with the real items the plugin actually puts
+   in those slots. */
+.admin-grid { display: grid; grid-template-columns: repeat(9, 1fr); gap: 5px; }
+.admin-grid span {
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 4px;
+  background: rgba(10, 6, 15, .8);
+  box-shadow:
+    inset 2px 2px 0 rgba(196, 170, 210, .2),
+    inset -2px -2px 0 rgba(0, 0, 0, .55),
+    inset 0 0 0 1px rgba(140, 116, 168, .3);
+  transition: transform .25s var(--ease-out-back), box-shadow .25s var(--ease);
+}
+.admin-grid span .mc { width: 74%; height: 74%; }
+.admin-grid span .mc.block { width: 96%; height: 96%; }
+.admin-grid span:has(.mc):hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow:
+    inset 2px 2px 0 rgba(210, 186, 230, .3),
+    inset -2px -2px 0 rgba(0, 0, 0, .5),
+    inset 0 0 0 1px var(--line-strong),
+    0 10px 22px -8px rgba(124, 78, 217, .8);
+}

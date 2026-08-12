@@ -20,12 +20,7 @@
 <nav class="nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <a class="nav-logo" href="#top">
-      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
-        <circle cx="32" cy="32" r="11" fill="none" stroke="#ddc6ff" stroke-width="5"/>
-        <g stroke="#b98bff" stroke-width="5" stroke-linecap="round">
-          <path d="M32 6v8M32 50v8M6 32h8M50 32h8"/>
-        </g>
-      </svg>
+      <span class="logo-mark" aria-hidden="true"><i class="mc mc-ender_pearl"></i></span>
       <span>RTP</span><span>Unleashed</span>
     </a>
     <div class="nav-links">
@@ -52,18 +47,7 @@
       <svg style="left:47%;top:80%;--s:14px;--dur:27s;--delay:5s;--peak:.3;--spin:44deg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="12" cy="12" r="8"/></svg>
     </div>
 
-    <div class="rune" aria-hidden="true">
-      <svg viewBox="0 0 64 64" fill="none">
-        <circle cx="32" cy="32" r="12" stroke="#ddc6ff" stroke-width="3.4"/>
-        <circle cx="32" cy="32" r="21" stroke="#b98bff" stroke-width="2" stroke-dasharray="5 7" opacity=".85"/>
-        <g stroke="#b98bff" stroke-width="3.4" stroke-linecap="round">
-          <path d="M32 4v9M32 51v9M4 32h9M51 32h9"/>
-        </g>
-        <g stroke="#5f89f2" stroke-width="2.6" stroke-linecap="round" opacity=".8">
-          <path d="M13 13l6 6M45 45l6 6M51 13l-6 6M19 45l-6 6"/>
-        </g>
-      </svg>
-    </div>
+    <div class="rune" aria-hidden="true"><i class="mc mc-ender_pearl"></i></div>
 
     <p class="eyebrow">Paper 1.21+ &middot; Java and Bedrock</p>
     <h1>RTP <span class="glint-text">Unleashed</span></h1>
@@ -153,11 +137,12 @@
         <p class="menu-title">Wilderness Teleport</p>
         <div class="menu-grid">
           <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span class="world" style="--ic:#7cbd4b"></span><span></span><span></span><span></span><span class="world" style="--ic:#c4553f"></span><span></span><span></span>
+          <span></span><span></span><span class="world"><i class="mc mc-grass_block block" title="Grass Block"></i></span><span></span><span></span><span></span><span class="world"><i class="mc mc-netherrack block" title="Netherrack"></i></span><span></span><span></span>
           <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
         <p class="menu-caption">Two worlds land at columns three and seven, mirrored around the
-          centre. One sits dead centre; five per row still keep a gap between neighbours.</p>
+          centre. One sits dead centre; five per row still keep a gap between neighbours.
+          Each world picks its own icon &mdash; these are the environment defaults.</p>
       </div>
     </div>
   </section>
@@ -171,7 +156,7 @@
 
     <div class="bento">
       <div class="bento-md card-surface reveal">
-        <p class="card-kicker">NO RESTARTS</p>
+        <i class="mc mc-name_tag card-kicker-icon" aria-hidden="true"></i><p class="card-kicker">NO RESTARTS</p>
         <h3>Configured entirely in game</h3>
         <p>Radii, shapes, cooldowns, warmups, costs, Y ranges, scan modes, and adding or removing
           worlds. Every change applies instantly and writes itself back to disk. Worlds are
@@ -179,7 +164,7 @@
       </div>
 
       <div class="bento-md card-surface reveal" data-d="1">
-        <p class="card-kicker">LANDINGS</p>
+        <i class="mc mc-grass_block card-kicker-icon block" aria-hidden="true"></i><p class="card-kicker">LANDINGS</p>
         <h3>Somewhere sensible, every time</h3>
         <p>Lava, cactus, fire, powder snow, berry bushes and cobwebs are refused. Oceans and
           rivers are skipped. Water and leaf landings are opt-in, and roofed worlds get a volume
@@ -208,7 +193,7 @@
       </div>
 
       <div class="bento-md card-surface reveal">
-        <p class="card-kicker">BEDROCK</p>
+        <i class="mc mc-compass card-kicker-icon" aria-hidden="true"></i><p class="card-kicker">BEDROCK</p>
         <h3>The same plugin on both clients</h3>
         <p>Chest menus, chat prompts for typed values, plain sounds and particles. No anvil
           renames or sign editors for Geyser to mistranslate, so what a Java player sees, a
@@ -216,7 +201,7 @@
       </div>
 
       <div class="bento-md card-surface reveal" data-d="1">
-        <p class="card-kicker">OPTIONAL HOOKS</p>
+        <i class="mc mc-gold_ingot card-kicker-icon" aria-hidden="true"></i><p class="card-kicker">OPTIONAL HOOKS</p>
         <h3>Vault and PlaceholderAPI</h3>
         <p>Per-world costs charged on arrival when Vault is installed, and placeholders for
           cooldowns, playtime and world counts when PlaceholderAPI is. The plugin loads and runs
@@ -227,6 +212,7 @@
 
   <section class="section" id="playtime">
     <div class="section-heading reveal">
+      <i class="mc mc-clock card-kicker-icon" aria-hidden="true"></i>
       <p class="eyebrow">PLAYTIME PERKS</p>
       <h2>Regulars wait less</h2>
       <p>Set thresholds and the cooldown shortens as people play. Read straight from the vanilla
@@ -316,14 +302,33 @@
         you which layer answered for every setting.</p>
     </div>
 
+    <div class="menu-mock card-surface reveal" style="max-width:none;margin-bottom:34px" role="img"
+         aria-label="The admin configuration menu: a row of item icons, one per setting.">
+      <p class="menu-title">RTP Admin - main</p>
+      <div class="admin-grid">
+        <span><i class="mc mc-name_tag" title="Display name"></i></span>
+        <span><i class="mc mc-map" title="Shape"></i></span>
+        <span><i class="mc mc-ender_pearl" title="Max radius"></i></span>
+        <span><i class="mc mc-compass" title="Centre mode"></i></span>
+        <span><i class="mc mc-spyglass" title="Scan mode"></i></span>
+        <span><i class="mc mc-lodestone block" title="Allow chunk generation"></i></span>
+        <span><i class="mc mc-clock" title="Cooldown"></i></span>
+        <span><i class="mc mc-gold_ingot" title="Cost"></i></span>
+        <span><i class="mc mc-grass_block block" title="Menu icon"></i></span>
+      </div>
+      <p class="menu-caption">The real controls, and the real items behind them. Left and right
+        click nudge a value, shift moves it five steps, and the drop key takes an exact number
+        typed in chat &mdash; which is also why it works on Bedrock.</p>
+    </div>
+
     <div class="limits-table card-surface reveal">
-      <div class="limits-row up"><h3>Shape</h3><p>A circle or a square ring, anchored on world spawn, the world border centre, or fixed coordinates.</p></div>
-      <div class="limits-row up"><h3>Radius</h3><p>Minimum and maximum distance from that anchor. The world border is respected with a margin so nobody lands inside the wall.</p></div>
-      <div class="limits-row mid"><h3>Height</h3><p>A Y band the search will accept, plus surface, volume, or automatic scanning per world.</p></div>
-      <div class="limits-row mid"><h3>Timing</h3><p>Warmup, cooldown and the arrival protection window, each per world and each shortened by playtime.</p></div>
-      <div class="limits-row mid"><h3>Cost</h3><p>Charged through Vault on arrival, if you use it. Multiplied down for long-serving players.</p></div>
-      <div class="limits-row off"><h3>Redirects</h3><p>Send a nether or lobby <code>/rtp</code> into the overworld instead, with <code>target-world</code>.</p></div>
-      <div class="limits-row off"><h3>Blacklists</h3><p>Unsafe ground, unsafe headroom and blocked biomes, all with <code>*</code> wildcards.</p></div>
+      <div class="limits-row up"><h3><i class="mc mc-map"></i>Shape</h3><p>A circle or a square ring, anchored on world spawn, the world border centre, or fixed coordinates.</p></div>
+      <div class="limits-row up"><h3><i class="mc mc-ender_pearl"></i>Radius</h3><p>Minimum and maximum distance from that anchor. The world border is respected with a margin so nobody lands inside the wall.</p></div>
+      <div class="limits-row mid"><h3><i class="mc mc-spyglass"></i>Height</h3><p>A Y band the search will accept, plus surface, volume, or automatic scanning per world.</p></div>
+      <div class="limits-row mid"><h3><i class="mc mc-clock"></i>Timing</h3><p>Warmup, cooldown and the arrival protection window, each per world and each shortened by playtime.</p></div>
+      <div class="limits-row mid"><h3><i class="mc mc-gold_ingot"></i>Cost</h3><p>Charged through Vault on arrival, if you use it. Multiplied down for long-serving players.</p></div>
+      <div class="limits-row off"><h3><i class="mc mc-compass"></i>Redirects</h3><p>Send a nether or lobby <code>/rtp</code> into the overworld instead, with <code>target-world</code>.</p></div>
+      <div class="limits-row off"><h3><i class="mc mc-netherrack block"></i>Blacklists</h3><p>Unsafe ground, unsafe headroom and blocked biomes, all with <code>*</code> wildcards.</p></div>
     </div>
   </section>
 
